@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Search, Heart, Menu } from "lucide-react";
+import { Send, Menu } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { SearchBar } from "./SearchBar";
 import { Sidebar } from "./Sidebar";
 import Container from "./Container";
@@ -78,13 +79,9 @@ export const Header = ({ className }) => {
 
           {/* Right-side Icons */}
           <div className="flex items-center space-x-2 md:space-x-4">
-            <button
-              className="p-2 rounded-full hover:bg-gray-100 transition"
-              onClick={() => setShowSearch(true)}
-              aria-label="Search"
-            >
-              <Search className="h-5 w-5" />
-            </button>
+            <a href="tel:+233257152860">
+              <FaWhatsapp className="w-5 h-5" />
+            </a>
 
             {/* Profile/Sidebar Button */}
             <button

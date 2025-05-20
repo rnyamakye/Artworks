@@ -26,22 +26,18 @@ export const Footer = () => {
               shop.
             </p>
             <div>
-              <span className="font-semibold text-gray-900 text-sm">
-                Subscribe to our newsletter
-              </span>
-              <form className="mt-2 flex">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="px-3 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm bg-white"
-                />
-                <button
+              <div className="mt-2 flex items-center">
+                <span className="font-semibold text-gray-900 text-sm bg-white py-2 px-4 rounded-l-md">
+                  Commision yours
+                </span>
+                <Link
+                  to={"/contact"}
                   type="submit"
                   className="bg-gray-900 text-white px-4 py-2 rounded-r-md text-sm font-semibold hover:bg-gray-800"
                 >
-                  Subscribe
-                </button>
-              </form>
+                  Contact Us
+                </Link>
+              </div>
             </div>
           </div>
 

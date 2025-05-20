@@ -40,11 +40,11 @@ const ProductCard = ({ item, setSearchText }: Props) => {
             <div className="flex min-h-full items-center justify-center p-4 z-50">
               <TransitionChild
                 enter="ease-in duration-300"
-                enterFrom="opacity-0 transform-[scale(95%)]"
-                enterTo="opacity-100 transform-[scale(100%)]"
-                leave="ease-in-out duration-300"
-                leaveFrom="opacity-100 transform-[scale(100%)]"
-                leaveTo="opacity-0 transform-[scale(95%)]"
+                enterFrom="opacity-0 transform-[scale(90%)]"
+                enterTo="opacity-100 transform-[scale(100%)] "
+                leave="ease-in duration-300 -translate-y-20"
+                leaveFrom="opacity-100 transform-[scale(100%)] -translate-y-10"
+                leaveTo="opacity-0 transform-[scale(90%)] -translate-y-10"
               >
                 <DialogPanel className="w-full max-w-lg rounded-xl bg-black/50 backdrop-blur-2xl z-50 p-6">
                   <div>
