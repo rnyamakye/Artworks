@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { useRef, useEffect } from "react";
-import { IoCloseSharp } from "react-icons/io5";
+import {
+  IoCloseSharp,
+  IoLogoWhatsapp,
+  IoLogoInstagram,
+  IoMailSharp
+} from "react-icons/io5";
+import { SiTiktok } from "react-icons/si";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -13,7 +19,7 @@ const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/blog", label: "Blog" },
-  { to: "/shop", label: "Shop" },
+  // { to: "/shop", label: "Shop" },
   { to: "/contact", label: "Contact" }
 ];
 
@@ -46,7 +52,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       {/* Sidebar from the RIGHT */}
       <div
         ref={drawerRef}
-        className={`fixed top-0 right-0 z-50 h-full w-[240px] bg-gray-100 shadow-2xl transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 z-50 h-full w-[250px] bg-gray-100 shadow-2xl transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         tabIndex={-1}
@@ -59,17 +65,58 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           onClick={onClose}
           aria-label="Close"
         >
-          <IoCloseSharp className="w-5 h-5 text-black" />
+          <IoCloseSharp className="w-6 h-6 text-black" />
         </button>
 
+        <div className="mt-12 ml-8  translate-x-5">
+          <img src="/award-image.JPG" alt="Award" className="w-32 rounded-xl" />
+          {/* Social Icons */}
+          <div className="flex gap-4 mt-6 items-center">
+            <a
+              href="https://wa.me/1234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="text-green-600 hover:text-green-700 transition"
+            >
+              <IoLogoWhatsapp className="w-6 h-6 text-gray-500 hover-text-gray-800" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="text-black hover:text-gray-700 transition"
+            >
+              <SiTiktok className="w-6 h-5 text-gray-500 hover-text-gray-800" />
+            </a>
+            <a
+              href="https://www.instagram.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-pink-600 hover:text-pink-700 transition"
+            >
+              <IoLogoInstagram className="w-6 h-6 text-gray-500 hover-text-gray-800" />
+            </a>
+            <a
+              href="mailto:youremail@example.com"
+              aria-label="Email"
+              className="text-gray-700 hover:text-gray-900 transition"
+            >
+              <IoMailSharp className="w-6 h-6 text-gray-500 hover-text-gray-800" />
+            </a>
+          </div>
+        </div>
+
         {/* Navigation Links */}
-        <nav className="flex flex-col gap-2 pt-20 px-8">
+        <nav className="flex flex-col gap- pt-5 pl-5 pr-4">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               onClick={onClose}
-              className="block py-3 text-lg font-medium text-gray-900 hover:font-semibold hover:text-black transition  bg-gray-200 rounded-md hover:shadow-md text-center"
+              className="block py-3 px-2 text-lg font-medium text-gray-600 hover:font-semibold hover:text-black transition bg-gray-100 rounded-md hover:bg-gray-200"
             >
               {link.label}
             </Link>

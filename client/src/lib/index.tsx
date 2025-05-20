@@ -1,14 +1,10 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase/firebase";
-
-
 export const getData = async (endpoint: string) => {
   try {
     const response = await fetch(endpoint, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
-      },
+        "Content-Type": "application/json"
+      }
     });
     if (!response.ok) {
       throw new Error("Data fetching error" + response?.statusText);
@@ -20,10 +16,3 @@ export const getData = async (endpoint: string) => {
     throw error;
   }
 };
-
-
-export async function fetchFavoritesFromFirebase(userId: string) {
-  const ref = collection(db, "users", userId, "favorites");
-  const snap = await getDocs(ref);
-  return snap.docs.map((doc) => doc.data());
-}

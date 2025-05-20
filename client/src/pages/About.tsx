@@ -456,16 +456,10 @@ const About: React.FC = () => {
               art enthusiasts.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button
-                onClick={() => setAuthOpen(true)}
-                className="bg-gray-900 text-white font-semibold px-6 py-2 rounded-md hover:bg-gray-800 transition"
-              >
-                Create an Account
-              </button>
               <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
               <Link
                 to={"/contact"}
-                className="bg-white border border-gray-300 text-gray-900 font-semibold px-6 py-2 rounded-md hover:bg-gray-100 transition"
+                className="bg-white border border-gray-300 text-gray-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition hover:bg-gray-800 hover:text-white"
               >
                 Contact Us
               </Link>

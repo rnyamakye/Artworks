@@ -5,22 +5,15 @@ import { FaWhatsapp } from "react-icons/fa";
 import { SearchBar } from "./SearchBar";
 import { Sidebar } from "./Sidebar";
 import Container from "./Container";
-import { useAuth } from "../hooks/useAuth";
-// import { useStore } from "../store/store"; // Zustand store
 
 export const Header = ({ className }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
+  
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const { currentUser } = useAuth();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const handleThemeToggle = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
-
-  // Get favorites count from Zustand store
-  // const favoriteProduct = useStore((state) => state.favoriteProduct);
-  // const favoriteCount = favoriteProduct.length;
 
   // Scroll handler
   useEffect(() => {
@@ -30,10 +23,6 @@ export const Header = ({ className }) => {
   }, []);
 
   // Auto-close sidebar when user logs in
-  useEffect(() => {
-    if (currentUser) setShowSidebar(false);
-  }, [currentUser]);
-
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
@@ -94,9 +83,6 @@ export const Header = ({ className }) => {
           </div>
         </div>
       </Container>
-
-      {/* Search Bar Overlay */}
-      <SearchBar isOpen={showSearch} onClose={() => setShowSearch(false)} />
 
       {/* Sidebar */}
       <Sidebar

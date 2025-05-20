@@ -12,16 +12,11 @@ import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
 import Blog from "./pages/Blog.tsx";
 import Product from "./pages/Products.tsx";
-import Cart from "./pages/Cart.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import Profile from "./pages/Profile.tsx";
 import Favorite from "./pages/Favorite.tsx";
-import SignIn from "./ui/signin.tsx";
-import { useStore } from "./store/store"; // Your Zustand store
 
 const RouterLayout = () => {
   
-
   return (
     <Layout>
       <ScrollRestoration />

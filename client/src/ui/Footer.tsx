@@ -25,15 +25,15 @@ export const Footer = () => {
               Discover the beauty of pencil art through our blog, tutorials, and
               shop.
             </p>
-            <div>
-              <div className="mt-2 flex items-center">
-                <span className="font-semibold text-gray-900 text-sm bg-white py-2 px-4 rounded-l-md">
+            <div className="flex flex-col items-center">
+              <div className="mt-2 flex items-center group">
+                <span className="font-semibold text-gray-900 text-sm bg-white py-2 px-4 rounded-l-md group-hover:bg-gray-900 group-hover:text-white transition duration-300">
                   Commision yours
                 </span>
                 <Link
                   to={"/contact"}
                   type="submit"
-                  className="bg-gray-900 text-white px-4 py-2 rounded-r-md text-sm font-semibold hover:bg-gray-800"
+                  className="bg-gray-900 text-white px-4 pl-6 py-2 rounded-r-md text-sm font-semibold group-hover:bg-white group-hover:text-gray-900 transition duration-300"
                 >
                   Contact Us
                 </Link>
