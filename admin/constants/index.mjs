@@ -4,7 +4,7 @@ export const blogData = [
   // Articles
   {
     id: 1,
-    type: "Article",
+    contentType: "Article",
     category: "Tutorials",
     title: "Mastering Pencil Shading: The Ultimate Guide",
     description:
@@ -15,7 +15,7 @@ export const blogData = [
   },
   {
     id: 2,
-    type: "Article",
+    contentType: "Article",
     category: "History",
     title: "The Evolution of Pencil Art Through the Ages",
     description:
@@ -26,7 +26,7 @@ export const blogData = [
   },
   {
     id: 3,
-    type: "Article",
+    contentType: "Article",
     category: "Interviews",
     title: "Interview with Elena Rodriguez: Hyperrealism in Graphite",
     description:
@@ -37,11 +37,11 @@ export const blogData = [
   },
   {
     id: 4,
-    type: "Article",
+    contentType: "Article",
     category: "Guides",
     title: "Choosing the Right Paper for Pencil Drawing",
     description:
-      "A guide to paper types and textures for optimal pencil artwork.",
+      "A guide to paper contentTypes and textures for optimal pencil artwork.",
     date: "March 20, 2024",
     author: "Alice Brown",
     readTime: "5 min read"
@@ -49,7 +49,7 @@ export const blogData = [
   // Videos
   {
     id: 5,
-    type: "Video",
+    contentType: "Video",
     title: "Realistic Eye Drawing Tutorial",
     description: "Step-by-step video guide to drawing a realistic human eye.",
     date: "March 14, 2024",
@@ -58,7 +58,7 @@ export const blogData = [
   },
   {
     id: 6,
-    type: "Video",
+    contentType: "Video",
     title: "Landscape Sketching Basics",
     description: "Learn how to sketch beautiful landscapes with pencils.",
     date: "March 17, 2024",
@@ -67,7 +67,7 @@ export const blogData = [
   },
   {
     id: 7,
-    type: "Video",
+    contentType: "Video",
     title: "Drawing Hair: Techniques for Texture",
     description: "A video breakdown of rendering realistic hair in graphite.",
     date: "March 19, 2024",
@@ -77,7 +77,7 @@ export const blogData = [
   // Pictures
   {
     id: 8,
-    type: "Picture",
+    contentType: "Picture",
     title: "Majestic Lion Portrait",
     description: "A detailed pencil drawing of a lion by Artist A.",
     date: "March 16, 2024",
@@ -85,7 +85,7 @@ export const blogData = [
   },
   {
     id: 9,
-    type: "Picture",
+    contentType: "Picture",
     title: "Cityscape at Dusk",
     description: "Urban pencil sketch capturing city lights and shadows.",
     date: "March 18, 2024",
@@ -93,7 +93,7 @@ export const blogData = [
   },
   {
     id: 10,
-    type: "Picture",
+    contentType: "Picture",
     title: "Still Life with Apples",
     description: "A classic still life pencil drawing of apples on a table.",
     date: "March 21, 2024",

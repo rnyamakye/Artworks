@@ -1,17 +1,19 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { SearchBar } from "./SearchBar";
 import { Sidebar } from "./Sidebar";
 import Container from "./Container";
 
-export const Header = ({ className }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  
-  const [showSidebar, setShowSidebar] = useState(false);
+interface HeaderProps {
+  className?: string;
+}
 
+export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+
   const handleThemeToggle = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
@@ -22,8 +24,8 @@ export const Header = ({ className }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Auto-close sidebar when user logs in
-  const navLinks = [
+  // Navigation links
+  const navLinks: { href: string; label: string }[] = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
@@ -68,7 +70,7 @@ export const Header = ({ className }) => {
 
           {/* Right-side Icons */}
           <div className="flex items-center space-x-2 md:space-x-4">
-            <a href="tel:+233257152860">
+            <a href="tel:+233257152860" aria-label="WhatsApp Contact">
               <FaWhatsapp className="w-5 h-5" />
             </a>
 
@@ -76,7 +78,7 @@ export const Header = ({ className }) => {
             <button
               className="flex items-center gap-2 p-2 rounded-full hover:bg-gray-100 transition"
               onClick={() => setShowSidebar(true)}
-              aria-label="Profile"
+              aria-label="Open Sidebar"
             >
               <Menu className="h-5 w-5 font-bold" />
             </button>

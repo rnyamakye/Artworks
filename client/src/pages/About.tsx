@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthModal from "../ui/login";
 
 const About: React.FC = () => {
   const [authOpen, setAuthOpen] = useState(false);
@@ -456,7 +455,6 @@ const About: React.FC = () => {
               art enthusiasts.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
               <Link
                 to={"/contact"}
                 className="bg-white border border-gray-300 text-gray-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition hover:bg-gray-800 hover:text-white"

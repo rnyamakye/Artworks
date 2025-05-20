@@ -10,10 +10,9 @@ import {
 
 interface Props {
   item: ProductProps;
-  setSearchText?: any;
 }
 
-const ProductCard = ({ item, setSearchText }: Props) => {
+const ProductCard = ({ item }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = () => setIsOpen(true);

@@ -9,16 +9,27 @@ import {
 } from "lucide-react";
 import { getData } from "../lib";
 import { config } from "../config";
-import AuthModal from "../ui/login";
 
 const ITEMS_PER_PAGE = 6;
+
+interface BlogItem {
+  id: string | number;
+  contentType: "Article" | "Video" | "Picture";
+  title: string;
+  description: string;
+  category?: string;
+  date: string;
+  author?: string;
+  artist?: string;
+  readTime?: string;
+  duration?: string;
+}
 
 export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-  const [blogsData, setBlogsData] = useState([]);
+  const [blogsData, setBlogsData] = useState<BlogItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showAuth, setShowAuth] = useState(false);
 
   // Fetch blogs data
   useEffect(() => {
@@ -27,7 +38,12 @@ export default function BlogPage() {
       try {
         const endpoint = `${config?.baseURL}/blogs`;
         const data = await getData(endpoint);
-        setBlogsData(data);
+        // Transform 'type' to 'contentType'
+        const transformed: BlogItem[] = data.map((item: any) => ({
+          ...item,
+          contentType: item.type
+        }));
+        setBlogsData(transformed);
       } catch (error) {
         console.error("Error fetching blogs data", error);
       }
@@ -36,12 +52,10 @@ export default function BlogPage() {
     fetchData();
   }, []);
 
-  // Reset to first page on search change
   useEffect(() => {
     setPage(1);
   }, [searchTerm]);
 
-  // Filter and paginate blogs
   const filtered = blogsData.filter((item) =>
     (item.title || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -51,14 +65,12 @@ export default function BlogPage() {
     page * ITEMS_PER_PAGE
   );
 
-  // Handle page change with smooth scroll
   const handlePageChange = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages) return;
     setPage(newPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Create array of page numbers
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
@@ -78,7 +90,7 @@ export default function BlogPage() {
           </p>
         </div>
 
-        {/* Search */}
+        {/* Search
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 items-center justify-center md:w-[500px]">
           <div className="flex items-center justify-center w-full border border-gray-300 rounded-md px-3 py-2 shadow-sm">
             <Search className="w-5 h-5 text-gray-400 mr-2" />
@@ -90,7 +102,7 @@ export default function BlogPage() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* Blog Cards */}
         {loading ? (
@@ -105,7 +117,7 @@ export default function BlogPage() {
                 >
                   {/* Image/Icon */}
                   <div className="bg-gray-200 h-40 flex items-center justify-center text-gray-400">
-                    {item.type === "Article" && (
+                    {item.contentType === "Article" && (
                       <svg
                         className="w-12 h-12"
                         fill="none"
@@ -124,8 +136,10 @@ export default function BlogPage() {
                         <path d="M3 15l6-6 4 4 5-5 3 3" />
                       </svg>
                     )}
-                    {item.type === "Video" && <Video className="w-12 h-12" />}
-                    {item.type === "Picture" && (
+                    {item.contentType === "Video" && (
+                      <Video className="w-12 h-12" />
+                    )}
+                    {item.contentType === "Picture" && (
                       <ImageIcon className="w-12 h-12" />
                     )}
                   </div>
@@ -134,14 +148,16 @@ export default function BlogPage() {
                   <div className="p-4">
                     <span
                       className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-2 ${
-                        item.type === "Article"
+                        item.contentType === "Article"
                           ? "bg-gray-300 text-gray-700"
-                          : item.type === "Video"
+                          : item.contentType === "Video"
                           ? "bg-blue-100 text-blue-700"
                           : "bg-green-100 text-green-700"
                       }`}
                     >
-                      {item.type === "Article" ? item.category : item.type}
+                      {item.contentType === "Article"
+                        ? item.category
+                        : item.contentType}
                     </span>
                     <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
                     <p className="text-gray-600 mb-4 text-sm">
@@ -156,7 +172,7 @@ export default function BlogPage() {
                         <UserIcon className="w-3 h-3" />
                         {item.author || item.artist}
                       </span>
-                      {item.type !== "Picture" && (
+                      {item.contentType !== "Picture" && (
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {item.readTime || item.duration}
@@ -168,7 +184,7 @@ export default function BlogPage() {
               ))}
             </div>
 
-            {/* Pagination Controls - show only if more than one page */}
+            {/* Pagination Controls */}
             {filtered.length > ITEMS_PER_PAGE && (
               <div className="flex justify-center items-center gap-4 mb-8">
                 <button
@@ -207,9 +223,6 @@ export default function BlogPage() {
           </>
         )}
       </main>
-
-      {/* Auth Modal */}
-      <AuthModal open={showAuth} onClose={() => setShowAuth(false)} />
     </>
   );
 }
