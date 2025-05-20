@@ -31,6 +31,7 @@
     "react-simple-image-slider": "^2.4.1",
     "react-slideshow-image": "^4.3.2",
     "redux-persist": "^6.0.0",
+    "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.4",
     "zustand": "^5.0.4"
   },
