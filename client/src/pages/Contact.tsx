@@ -1,4 +1,5 @@
 import ContactForm from "../ui/ContactForm";
+import React from "react";
 import { ContactCard } from "../ui/ContactCard";
 import LocationMap from "../ui/LocationMap";
 import BusinessHours from "../ui/BusinessHours";
@@ -7,7 +8,9 @@ import Container from "../ui/Container";
 
 const Contact = () => {
   // Simple smooth scroll handler
-  const handleContactNowClick = (event) => {
+  const handleContactNowClick = (
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
     event.preventDefault();
     const form = document.getElementById("contactForm");
     if (form) {

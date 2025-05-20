@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  Search,
   Calendar,
   User as UserIcon,
   Clock,
@@ -26,7 +25,7 @@ interface BlogItem {
 }
 
 export default function BlogPage() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm] = useState("");
   const [page, setPage] = useState(1);
   const [blogsData, setBlogsData] = useState<BlogItem[]>([]);
   const [loading, setLoading] = useState(true);

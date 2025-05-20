@@ -13,10 +13,8 @@ import Contact from "./pages/Contact.tsx";
 import Blog from "./pages/Blog.tsx";
 import Product from "./pages/Products.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import Favorite from "./pages/Favorite.tsx";
 
 const RouterLayout = () => {
-  
   return (
     <Layout>
       <ScrollRestoration />
@@ -36,7 +34,6 @@ const router = createBrowserRouter([
       { path: "/contact", element: <Contact /> },
       { path: "/products", element: <Product /> },
       { path: "/product/:id", element: <Product /> },
-      { path: "/favorite", element: <Favorite /> },
       { path: "/*", element: <NotFound /> }
     ]
   }

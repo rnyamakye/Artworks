@@ -19,7 +19,7 @@ const Carousel: React.FC<CarouselProps> = ({
   autoSlide = false,
   autoSlideInterval = 3000
 }) => {
-  const [sliderImages, setSliderImages] = useState<SliderImage[]>([]);
+  const [ setSliderImages] = useState<SliderImage[]>([]);
   const [curr, setCurr] = useState<number>(0);
 
   const prev = () =>

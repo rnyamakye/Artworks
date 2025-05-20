@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const About: React.FC = () => {
-  const [authOpen, setAuthOpen] = useState(false);
-
   return (
     <>
       <main className="mx-auto px-4 md:px-8 py-1 space-y-20">
