@@ -1,46 +1,20 @@
-import { HashLink } from "react-router-hash-link";
 import ContactForm from "../ui/ContactForm";
 import { ContactCard } from "../ui/ContactCard";
 import LocationMap from "../ui/LocationMap";
 import BusinessHours from "../ui/BusinessHours";
 import FAQSection from "../ui/FAQSection";
 import Container from "../ui/Container";
-import { Link } from "react-router-dom";
 
-// Custom scroll function for smooth, slow movement
-const slowScroll = (el) => {
-  const offset = 0; // Adjust for fixed headers/top padding
-  const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-  const targetPosition = elementPosition - offset;
-
-  const startPosition = window.pageYOffset;
-  const distance = targetPosition - startPosition;
-  const duration = 1500; // Scroll duration in milliseconds (1.5s)
-  let startTime = null;
-
-  // Easing function for natural acceleration/deceleration
-  const easeInOutCubic = (t) =>
-    t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-
-  const animateScroll = (currentTime) => {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / duration, 1);
-    const easedProgress = easeInOutCubic(progress);
-
-    window.scrollTo(0, startPosition + distance * easedProgress);
-
-    if (timeElapsed < duration) {
-      requestAnimationFrame(animateScroll);
-    } else {
-      window.scrollTo(0, targetPosition); // Ensure exact final position
+const Contact = () => {
+  // Simple smooth scroll handler
+  const handleContactNowClick = (event) => {
+    event.preventDefault();
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  requestAnimationFrame(animateScroll);
-};
-
-const Contact = () => {
   return (
     <Container className="bg-white min-h-screen flex flex-col items-center justify-center py-20 w-full">
       <section className="flex flex-col items-center justify-center mb-10 ">
@@ -59,10 +33,10 @@ const Contact = () => {
               We're here to answer your questions and help you on your pencil
               art journey.
             </p>
-            {/* Apply custom slowScroll function */}
-            <HashLink
-              to="#contactForm"
-              scroll={slowScroll}
+            {/* Smooth scroll to contact form */}
+            <a
+              href="#contactForm"
+              onClick={handleContactNowClick}
               className="bg-gray-900 text-white px-6 py-3 rounded-lg w-fit font-semibold flex items-center hover:bg-gray-800 transition"
             >
               <svg
@@ -79,7 +53,7 @@ const Contact = () => {
                 />
               </svg>
               Contact Now
-            </HashLink>
+            </a>
           </div>
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-48 h-48 flex items-center justify-center">
@@ -251,4 +225,5 @@ const Contact = () => {
     </Container>
   );
 };
+
 export default Contact;

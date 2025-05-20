@@ -7,7 +7,7 @@ const checkConfig = (server: string): Config | {} => {
   switch (server) {
     case "production":
       config = {
-        baseURL: "http://localhost:3000"
+        baseURL: "https://www.gcode.work"
       };
       break;
     case "local":

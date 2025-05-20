@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Send, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { SearchBar } from "./SearchBar";
 import { Sidebar } from "./Sidebar";

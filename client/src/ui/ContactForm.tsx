@@ -27,7 +27,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       onSubmit={handleSubmit}
       className="bg-[#] rounded-lg shadow p-6 space-y-4"
     >
-      <h3 className="text-black text-lg font-semibold mb-2">Contact Form</h3>
+      <h3 className="text-black text-2xl font-semibold mb-3">Contact Us</h3>
       <p className="text-gray-800 text-sm mb-4">
         We'll get back to you as soon as possible.
       </p>
@@ -67,7 +67,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       </div>
       <button
         type="submit"
-        className="w-full bg-[#10172a] border border-white text-white py-2 rounded hover:bg-[#1e293b] transition font-semibold flex items-center justify-center"
+        className="w-full bg-[#10172a] border border-white text-white py-2 rounded-lg hover:bg-[#1e293b] transition font-semibold flex items-center justify-center"
       >
         <svg
           className="w-5 h-5 mr-2"
