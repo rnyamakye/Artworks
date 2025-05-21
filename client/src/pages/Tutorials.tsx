@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
-import { Calendar } from "lucide-react";
+// import { Calendar } from "lucide-react";
 import { getData } from "../lib";
 import { config } from "../config";
 
@@ -62,7 +62,7 @@ export default function TutorialsPage() {
     height: "350",
     width: "100%",
     playerVars: {
-      autoplay: 0,
+      autoplay: 0
     }
   };
 
