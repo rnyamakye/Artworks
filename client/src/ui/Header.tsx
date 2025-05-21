@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
       >
         <div className="max-w-screen-xl mx-4 md:mx-5 h-16 md:h-16 flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 z-10">
             <Link to={"/"}>
               <img
                 src="/smartist-logo-1.jpg"
@@ -70,7 +70,11 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
 
           {/* Right-side Icons */}
           <div className="flex items-center space-x-2 md:space-x-4">
-            <a href="tel:+233257152860" aria-label="WhatsApp Contact">
+            <a
+              href="https://wa.me/0547348350"
+              target="_blank"
+              aria-label="WhatsApp Contact"
+            >
               <FaWhatsapp className="w-5 h-5" />
             </a>
 

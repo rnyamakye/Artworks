@@ -3,8 +3,8 @@ export const getData = async (endpoint: string) => {
     const response = await fetch(endpoint, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
     if (!response.ok) {
       throw new Error("Data fetching error" + response?.statusText);

@@ -1,46 +1,39 @@
 import { useState, useEffect } from "react";
-import {
-  Calendar,
-  User as UserIcon,
-  Clock,
-  Video,
-  Image as ImageIcon
-} from "lucide-react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Calendar } from "lucide-react";
 import { getData } from "../lib";
 import { config } from "../config";
 
 const ITEMS_PER_PAGE = 6;
 
-interface BlogItem {
+interface BlogImage {
   id: string | number;
-  contentType: "Article" | "Video" | "Picture";
-  title: string;
+  image: string;
   description: string;
-  category?: string;
   date: string;
-  author?: string;
-  artist?: string;
-  readTime?: string;
-  duration?: string;
 }
 
 export default function BlogPage() {
-  const [searchTerm] = useState("");
   const [page, setPage] = useState(1);
-  const [blogsData, setBlogsData] = useState<BlogItem[]>([]);
+  const [blogsData, setBlogsData] = useState<BlogImage[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch blogs data
+  // Modal state
+  const [selected, setSelected] = useState<BlogImage | null>(null);
+
+  // Fetch only images from backend
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const endpoint = `${config?.baseURL}/blogs`;
+        const endpoint = `${config?.baseURL}/blogs?type=Picture`;
         const data = await getData(endpoint);
-        // Transform 'type' to 'contentType'
-        const transformed: BlogItem[] = data.map((item: any) => ({
-          ...item,
-          contentType: item.type
+        // Only keep id, image, description, date
+        const transformed: BlogImage[] = data.map((item: any) => ({
+          id: item.id,
+          image: item.image,
+          description: item.description,
+          date: item.date
         }));
         setBlogsData(transformed);
       } catch (error) {
@@ -51,15 +44,8 @@ export default function BlogPage() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    setPage(1);
-  }, [searchTerm]);
-
-  const filtered = blogsData.filter((item) =>
-    (item.title || "").toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
-  const paginatedData = filtered.slice(
+  const totalPages = Math.max(1, Math.ceil(blogsData.length / ITEMS_PER_PAGE));
+  const paginatedData = blogsData.slice(
     (page - 1) * ITEMS_PER_PAGE,
     page * ITEMS_PER_PAGE
   );
@@ -70,40 +56,69 @@ export default function BlogPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
-
   return (
     <>
+      {/* Modal for more details */}
+      <Transition appear show={!!selected} as="div">
+        <Dialog
+          as="div"
+          className="relative z-50 focus:outline-none"
+          onClose={() => setSelected(null)}
+        >
+          <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-black/30 backdrop-blur-sm">
+            <div className="flex min-h-full items-center justify-center p-4">
+              <Transition.Child
+                enter="ease-in duration-300"
+                enterFrom="opacity-0 transform-[scale(90%)]"
+                enterTo="opacity-100 transform-[scale(100%)] "
+                leave="ease-in duration-100 -translate-y-20"
+                leaveFrom="opacity-100 transform-[scale(100%)] -translate-y-10"
+                leaveTo="opacity-0 transform-[scale(90%)] -translate-y-10"
+              >
+                <Dialog.Panel className="w-full max-w-lg rounded-2xl bg-black/30 backdrop-blur-2xl z-50 p-6">
+                  <img
+                    src={selected?.image}
+                    alt="Blog"
+                    className="w-full object-cover rounded-lg max-h-96"
+                  />
+                  <div className="mt-4 text-white">
+                    <div className="flex items-center gap-2 mb-2 text-sm text-gray-200">
+                      <Calendar className="w-4 h-4" />
+                      {selected?.date}
+                    </div>
+                    <Dialog.Title className="text-lg font-semibold mb-2">
+                      Description
+                    </Dialog.Title>
+                    <Dialog.Description className="text-base whitespace-pre-line">
+                      {selected?.description}
+                    </Dialog.Description>
+                  </div>
+                  <button
+                    className="mt-6 px-4 py-2 rounded bg-gray-700 text-white hover:bg-gray-600"
+                    onClick={() => setSelected(null)}
+                  >
+                    Close
+                  </button>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+
       <main className="w-full mx-auto px-4 md:px-8 py-12 flex flex-col items-center">
         {/* Header */}
         <div className="mb-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">
-            Explore Our Blog
+            Explore Our Blog Gallery
           </h1>
           <p className="text-gray-600 max-w-xl mx-auto">
-            Discover articles, videos, and artwork from our community of pencil
-            artists and enthusiasts.
+            Discover artwork and images from our community of satisfied
+            customers.
           </p>
         </div>
 
-        {/* Search
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 items-center justify-center md:w-[500px]">
-          <div className="flex items-center justify-center w-full border border-gray-300 rounded-md px-3 py-2 shadow-sm">
-            <Search className="w-5 h-5 text-gray-400 mr-2" />
-            <input
-              type="text"
-              placeholder="Search blog posts..."
-              className="flex-grow outline-none text-gray-700"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-        </div> */}
-
-        {/* Blog Cards */}
+        {/* Blog Image Cards */}
         {loading ? (
           <div className="py-12 text-gray-500 text-lg">Loading...</div>
         ) : (
@@ -112,79 +127,25 @@ export default function BlogPage() {
               {paginatedData.map((item) => (
                 <article
                   key={item.id}
-                  className="bg-white rounded-md shadow-sm overflow-hidden relative"
+                  className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition"
+                  onClick={() => setSelected(item)}
                 >
-                  {/* Image/Icon */}
-                  <div className="bg-gray-200 h-40 flex items-center justify-center text-gray-400">
-                    {item.contentType === "Article" && (
-                      <svg
-                        className="w-12 h-12"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                        viewBox="0 0 24 24"
-                      >
-                        <rect
-                          x="3"
-                          y="3"
-                          width="18"
-                          height="18"
-                          rx="2"
-                          ry="2"
-                        />
-                        <path d="M3 15l6-6 4 4 5-5 3 3" />
-                      </svg>
-                    )}
-                    {item.contentType === "Video" && (
-                      <Video className="w-12 h-12" />
-                    )}
-                    {item.contentType === "Picture" && (
-                      <ImageIcon className="w-12 h-12" />
-                    )}
-                  </div>
-
-                  {/* Content */}
+                  <img src={item.image} className="w-full h-56 object-cover" />
                   <div className="p-4">
-                    <span
-                      className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-2 ${
-                        item.contentType === "Article"
-                          ? "bg-gray-300 text-gray-700"
-                          : item.contentType === "Video"
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-green-100 text-green-700"
-                      }`}
-                    >
-                      {item.contentType === "Article"
-                        ? item.category
-                        : item.contentType}
-                    </span>
-                    <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                    <p className="text-gray-600 mb-4 text-sm">
+                    <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
+                      <Calendar className="w-3 h-3" />
+                      {item.date}
+                    </div>
+                    <p className="text-gray-700 text-sm line-clamp-3">
                       {item.description}
                     </p>
-                    <div className="flex flex-wrap gap-4 text-gray-400 text-xs">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {item.date}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <UserIcon className="w-3 h-3" />
-                        {item.author || item.artist}
-                      </span>
-                      {item.contentType !== "Picture" && (
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {item.readTime || item.duration}
-                        </span>
-                      )}
-                    </div>
                   </div>
                 </article>
               ))}
             </div>
 
             {/* Pagination Controls */}
-            {filtered.length > ITEMS_PER_PAGE && (
+            {blogsData.length > ITEMS_PER_PAGE && (
               <div className="flex justify-center items-center gap-4 mb-8">
                 <button
                   onClick={() => handlePageChange(page - 1)}
@@ -193,23 +154,23 @@ export default function BlogPage() {
                 >
                   Previous
                 </button>
-
                 <div className="flex gap-2">
-                  {pageNumbers.map((number) => (
-                    <button
-                      key={number}
-                      onClick={() => handlePageChange(number)}
-                      className={`px-3 py-2 rounded-md transition-colors ${
-                        page === number
-                          ? "bg-gray-900 text-white px-3 py-2 rounded-r-md text-sm font-semibold hover:bg-gray-800"
-                          : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                      }`}
-                    >
-                      {number}
-                    </button>
-                  ))}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (number) => (
+                      <button
+                        key={number}
+                        onClick={() => handlePageChange(number)}
+                        className={`px-3 py-2 rounded-md transition-colors ${
+                          page === number
+                            ? "bg-gray-900 text-white font-semibold"
+                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }`}
+                      >
+                        {number}
+                      </button>
+                    )
+                  )}
                 </div>
-
                 <button
                   onClick={() => handlePageChange(page + 1)}
                   disabled={page === totalPages}

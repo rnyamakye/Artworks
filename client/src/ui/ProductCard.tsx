@@ -1,7 +1,6 @@
 import { ProductProps } from "../../type";
 import { useState } from "react";
 import {
-  Button,
   Dialog,
   DialogPanel,
   Transition,
@@ -14,7 +13,6 @@ interface Props {
 
 const ProductCard = ({ item }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
 
@@ -24,7 +22,7 @@ const ProductCard = ({ item }: Props) => {
         <img
           onClick={open}
           src={item?.images[0]}
-          alt="productImage"
+          alt=""
           className="w-full h-full rounded-lg object-cover group-hover:scale-[1.15] duration-300 scale-[1.08]"
         />
       </div>
@@ -36,7 +34,7 @@ const ProductCard = ({ item }: Props) => {
           onClose={close}
         >
           <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 z-50">
+            <div className="flex min-h-full backdrop-blur-md items-center justify-center p-4 z-50">
               <TransitionChild
                 enter="ease-in duration-300"
                 enterFrom="opacity-0 transform-[scale(90%)]"
@@ -45,21 +43,20 @@ const ProductCard = ({ item }: Props) => {
                 leaveFrom="opacity-100 transform-[scale(100%)] -translate-y-10"
                 leaveTo="opacity-0 transform-[scale(90%)] -translate-y-10"
               >
-                <DialogPanel className="w-full max-w-lg rounded-xl bg-black/50 backdrop-blur-2xl z-50 p-6">
+                <DialogPanel className="w-full max-w-lg rounded-xl bg-black/10  z-50 p-6">
                   <div>
                     <img
                       src={item?.images[0]}
-                      alt="productImage"
                       className="w-full object-cover rounded-lg h-full"
                     />
                   </div>
                   <div className="mt-4">
-                    <Button
+                    {/* <Button
                       className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                       onClick={close}
                     >
                       Got it, thanks!
-                    </Button>
+                    </Button> */}
                   </div>
                 </DialogPanel>
               </TransitionChild>

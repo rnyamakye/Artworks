@@ -29,8 +29,8 @@ const Contact = () => {
           Have questions about our artwork, tutorials, or products? We'd love to
           hear from you!
         </p>
-        <div className="w-full md:w-[70rem] bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl shadow flex flex-col md:flex-row items-center p-8">
-          <div className="flex-1 mb-6 md:mb-0 md:mr-8">
+        <div className="w-full md:w-[70rem] rounded-xl shadow flex flex-col md:flex-row bg-[image:url('/smartist-poster-2.jpg')] items-center p-8">
+          <div className="flex-1 mb-6 md:mb-0 md:mr-8 ">
             <h2 className="text-3xl font-bold mb-2">Let's Connect</h2>
             <p className="text-gray-700 mb-6">
               We're here to answer your questions and help you on your pencil
@@ -38,6 +38,7 @@ const Contact = () => {
             </p>
             {/* Smooth scroll to contact form */}
             <a
+              target="_blank"
               href="#contactForm"
               onClick={handleContactNowClick}
               className="bg-gray-900 text-white px-6 py-3 rounded-lg w-fit font-semibold flex items-center hover:bg-gray-800 transition"
@@ -112,11 +113,15 @@ const Contact = () => {
             }
             title="Email Us"
             subtitle="We typically respond within 24 hours"
+            href="mailto:smartmasterpiece7@gmail.com"
           >
-            <p className="font-medium text-gray-800">info@pencilartblog.com</p>
-            <p className="font-medium text-gray-800">
-              support@pencilartblog.com
-            </p>
+            <a
+              target="_blank"
+              href="mailto:smartmasterpiece7@gmail.com"
+              className="font-medium text-gray-800 underline"
+            >
+              smartmasterpiece7@gmail.com
+            </a>
           </ContactCard>
           <ContactCard
             icon={
@@ -137,9 +142,15 @@ const Contact = () => {
             title="Call Us"
             subtitle="We're available during business hours"
           >
-            <p className="font-medium text-gray-800">(555) 123-4567</p>
-            <p className="text-gray-800 text-sm">Mon-Fri: 9am - 5pm PST</p>
-            <p className="text-gray-800 text-sm">Sat: 10am - 2pm PST</p>
+            <a
+              target="_blank"
+              href="tel:+233547348350"
+              className="font-medium text-gray-800 "
+            >
+              (054) 734 8350{" "}
+            </a>
+            <p className="text-gray-800 text-sm">Mon-Fri: 9am - 5pm GMT</p>
+            <p className="text-gray-800 text-sm">Sat: 10am - 2pm GMT</p>
           </ContactCard>
           <ContactCard
             icon={
@@ -165,13 +176,10 @@ const Contact = () => {
             title="Visit Us"
             subtitle="Our studio is open for appointments"
           >
-            <p className="font-medium text-gray-800">123 Art Studio Lane</p>
             <p className="font-medium text-gray-800">
-              Creative District, CA 90210
+              Near Baba Yara Sports Stadium
             </p>
-            <p className="text-gray-800 text-sm">
-              Open for studio visits by appointment
-            </p>
+            <p className="font-medium text-gray-800">Amakom, Kumasu</p>
           </ContactCard>
         </div>
       </section>
@@ -204,14 +212,14 @@ const Contact = () => {
             </p>
             <p className="text-gray-600 text-sm">
               Our customer support team is available Monday through Friday from
-              9am to 5pm PST, and we strive to respond to all inquiries within
+              9am to 5pm GMT, and we strive to respond to all inquiries within
               24 hours.
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4">
             <LocationMap
-              address="123 Art Studio Lane, Creative District, CA 90210"
-              mapQuery="123 Art Studio Lane, Creative District, CA 90210"
+              address="Near Baba Yara Sports Stadium, Amakom, Kumasi, Ghana"
+              mapQuery="Baba Yara Sports Stadium, Amakom, Kumasi, Ghana"
             />
             <BusinessHours />
           </div>

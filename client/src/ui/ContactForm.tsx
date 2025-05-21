@@ -25,7 +25,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#] rounded-lg shadow p-6 space-y-4"
+      className=" rounded-2xl shadow p-6 space-y-4"
     >
       <h3 className="text-black text-2xl font-semibold mb-3">Contact Us</h3>
       <p className="text-gray-800 text-sm mb-4">

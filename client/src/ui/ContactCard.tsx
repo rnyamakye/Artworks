@@ -3,18 +3,20 @@ interface ContactCardProps {
   title: string;
   subtitle: string;
   children: React.ReactNode;
+  href?: string;
 }
 
 export const ContactCard = ({
   icon,
   title,
   subtitle,
-  children
+  children,
+  href
 }: ContactCardProps) => {
   return (
-    <div className="bg-white rounded-xl shadow-md">
+    <a href={href} className="bg-white rounded-xl shadow-md">
       <div className="flex flex-col">
-        <div className="bg-gray-100 rounded-t-xl flex justify-center items-center h-20">
+        <div className="bg-gray-200 rounded-t-xl flex justify-center items-center h-20">
           {icon}
         </div>
         <div className="p-6">
@@ -23,6 +25,6 @@ export const ContactCard = ({
           {children}
         </div>
       </div>
-    </div>
+    </a>
   );
 };
