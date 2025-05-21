@@ -15,7 +15,6 @@ import Product from "./pages/Products.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ArtSuppliesGuide from "./pages/ArtSupplies.tsx";
 import FAQs from "./pages/FAQ.tsx";
-import PencilTechniques from "./pages/PencilTechniques.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import ReturnPolicy from "./pages/ReturnPolicy.tsx";
 import ShippingPolicy from "./pages/ShippingPolicy.tsx";

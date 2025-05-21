@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const ReturnPolicy = () => (
   <div className="max-w-3xl mx-auto py-16 px-4">

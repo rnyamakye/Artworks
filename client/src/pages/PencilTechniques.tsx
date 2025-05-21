@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const PencilTechniques = () => (
   <div className="max-w-3xl mx-auto py-16 px-4">
