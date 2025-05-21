@@ -28,29 +28,25 @@ const articles = [
     src: "/commmissioned-portrait-30.JPG",
     date: "March 11, 2024",
     title: "Mastering Pencil Shading Techniques",
-    description:
-      "Learn the essential techniques for creating depth and dimension in..."
+    description: ""
   },
   {
     src: "/commmissioned-portrait-3.JPG",
     date: "March 12, 2024",
     title: "Mastering Pencil Shading Techniques",
-    description:
-      "Learn the essential techniques for creating depth and dimension in..."
+    description: ""
   },
   {
     src: "/commmissioned-portrait-7.JPG",
     date: "March 13, 2024",
     title: "Mastering Pencil Shading Techniques",
-    description:
-      "Learn the essential techniques for creating depth and dimension in..."
+    description: ""
   },
   {
     src: "/commmissioned-portrait-5.JPG",
     date: "March 14, 2024",
     title: "Mastering Pencil Shading Techniques",
-    description:
-      "Learn the essential techniques for creating depth and dimension in..."
+    description: ""
   }
 ];
 

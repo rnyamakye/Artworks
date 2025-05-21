@@ -172,8 +172,7 @@ export const products = [
     images: [
       "https://d2oe4z990jupbo.cloudfront.net/commmissioned-portrait-21.jpg"
     ],
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis repellendus dolore, facilis iste obcaecati ab nesciunt ducimus quidem molestias aut? Aut vitae error delectus itaque facilis obcaecati nemo dolore cumque. Blanditiis minus corrupti dignissimos, voluptas iusto, ,eligendi maiores doloremque aliquid mollitia in hic dolores pariatur doloribus dolorum totam. Facilis, dignissimos."
+    description: ""
   },
   {
     _id: 2023,
