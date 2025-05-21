@@ -59,11 +59,10 @@ export default function TutorialsPage() {
   };
 
   const opts = {
-    height: "200",
+    height: "350",
     width: "100%",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0 // Disable autoplay
+      autoplay: 0,
     }
   };
 
@@ -91,7 +90,7 @@ export default function TutorialsPage() {
                 className="bg-white rounded-md shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition"
               >
                 <YouTube videoId={video.youtubeId} opts={opts} />
-                <div className="p-4">
+                {/* <div className="p-4">
                   <h2 className="text-lg font-semibold text-gray-900 mb-2">
                     {video.title}
                   </h2>
@@ -102,7 +101,7 @@ export default function TutorialsPage() {
                   <p className="text-gray-700 text-sm line-clamp-3">
                     {video.description}
                   </p>
-                </div>
+                </div> */}
               </article>
             ))}
           </div>
