@@ -42,7 +42,7 @@ const allImagePaths = [
   ...articles.map((a) => a.src)
 ];
 
-function preloadImage(src) {
+function preloadImage(src: any) {
   return new Promise((resolve, reject) => {
     const img = new window.Image();
     img.src = src;
@@ -51,7 +51,7 @@ function preloadImage(src) {
   });
 }
 
-function preloadImages(imageArray) {
+function preloadImages(imageArray: any) {
   return Promise.all(imageArray.map(preloadImage));
 }
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import { Sidebar } from "./Sidebar";
 import Container from "./Container";
 import { IoLogoInstagram, IoLogoWhatsapp, IoMailSharp } from "react-icons/io5";
@@ -115,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
               onClick={() => setShowSidebar(true)}
               aria-label="Open Sidebar"
             >
-              <Menu className="h-5 w-5 font-bold" />
+              <Menu className="h-7 w-7 font-bold" />
             </button>
           </div>
         </div>
