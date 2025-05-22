@@ -7,21 +7,15 @@ import Loading from "./ui/Loading";
 const artworks = [
   {
     src: "/commmissioned-portrait-29.JPG",
-    title: "Pencil Masterpiece 1",
-    artist: "Artist Name",
-    price: "$199.99"
+    category: "Children"
   },
   {
     src: "/family-portrait.JPG",
-    title: "Pencil Masterpiece 1",
-    artist: "Artist Name",
-    price: "$199.99"
+    category: "Family Portrait"
   },
   {
     src: "/realistic-eye.JPG",
-    title: "Pencil Masterpiece 1",
-    artist: "Artist Name",
-    price: "$199.99"
+    category: "Abstract"
   }
 ];
 
@@ -31,21 +25,21 @@ const articles = [
     date: "March 11, 2024",
     title: "Doing family portraits is one of the best parts of the job.",
     description: ""
-  },
+  }
 ];
 
 const testimonials = [
   {
     name: "Richard",
     role: "Art Enthusiast",
-    text: "Portraits by Smartist are simply breathtaking! The attention to detail is incredible.",
-  },
+    text: "Portraits by Smartist are simply breathtaking! The attention to detail is incredible."
+  }
 ];
 
 // --- IMAGE PRELOADING HELPERS ---
 const allImagePaths = [
-  ...artworks.map(a => a.src),
-  ...articles.map(a => a.src)
+  ...artworks.map((a) => a.src),
+  ...articles.map((a) => a.src)
 ];
 
 function preloadImage(src) {
@@ -80,9 +74,7 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   return (
@@ -99,15 +91,23 @@ const App = () => {
           <div className="flex gap-4">
             <Link
               to="/products"
-              className="group px-3 py-3 bg-gray-900 text-white rounded-md font-semibold shadow hover:bg-gray-800 transition hover:shadow-xl"
+              className="group px-3 py-3 bg-gray-900 text-white rounded-md font-semibold shadow hover:bg-gray-800 transition hover:shadow-xl flex items-center"
             >
               Browse Artwork{" "}
-              <span
-                aria-hidden
-                className="group-hover:translate-x-2 transition-transform duration-300"
+              <svg
+                className="ml-2 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
               >
-                →
-              </span>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
             <Link
               to="/blog"
@@ -128,7 +128,7 @@ const App = () => {
         </div>
       </div>
       <section>
-        <div className="px-6 pt-16 min-h-screen">
+        <div className="px-6 pt-16 min-h-screen md:min-h-full">
           <div className="flex items-center-safe md:items-center justify-between">
             <h2 className="text-3xl font-bold py-6">Artworks</h2>
             <Link to={"/products"} className="gap-2 group overflow-hidden">
@@ -138,25 +138,30 @@ const App = () => {
               <span className="inline-flex w-full h-[1px] bg-black absolute bottom-0 left-0 transform -translate-x-[50%] scale-0 group-hover:translate-x-0 duration-300 group-hover:scale-100" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:flex-row gap-6 mb-12">
             {artworks.map((product, idx) => (
               <div
                 key={idx}
                 className="bg-white rounded-lg shadow overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
               >
-                <div className="flex-1 flex items-center justify-center bg-gray-100 aspect-square">
+                <div className="relative flex-1 flex items-center justify-center bg-gray-100 aspect-square">
                   <img
                     src={product.src}
-                    alt={product.title}
                     className="object-cover object-top w-full h-full"
                   />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex items-end justify-cente p-4">
+                    <span className="text-gray-400 text-md ">
+                      {product.category}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="max-w-7xl mx-auto px-6 py-12 md:py-0">
         {/* Articles Grid */}
         <div className="flex items-center justify-between py-6">
           <h2 className="text-3xl font-bold">Latest Articles</h2>
@@ -167,30 +172,31 @@ const App = () => {
             <span className="inline-flex w-full h-[1px] bg-black absolute bottom-0 left-0 transform -translate-x-[50%] scale-0 group-hover:translate-x-0 duration-300 group-hover:scale-100" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
           {articles.map((article, idx) => (
             <Link to={"/articles"}>
-            <article
-              key={idx}
-              className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition duration-300"
-            >
-              <div className="bg-gray-200 aspect-[4/3] flex items-center justify-center">
-                <img
-                  src={article.src}
-                  alt="Art"
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-              <div className="p-4">
-                <time className="block mb-1 text-xs text-gray-500">
-                  {article.date}
-                </time>
-                <h3 className="text-base font-semibold text-black mb-1">
-                  {article.title}
-                </h3>
-                <p className="text-sm text-gray-600">{article.description}</p>
-              </div>
-            </article></Link>
+              <article
+                key={idx}
+                className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition duration-300"
+              >
+                <div className="bg-gray-200 aspect-[4/3] flex items-center justify-center">
+                  <img
+                    src={article.src}
+                    alt="Art"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+                <div className="p-4">
+                  <time className="block mb-1 text-xs text-gray-500">
+                    {article.date}
+                  </time>
+                  <h3 className="text-base font-semibold text-black mb-1">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">{article.description}</p>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       </section>

@@ -13,7 +13,7 @@ const Artworks = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [pendingPage, setPendingPage] = useState<number | null>(null);
-  const productsPerPage = 10;
+  const productsPerPage = 12;
 
   // On mount, read saved page from localStorage if valid
   useEffect(() => {
@@ -50,7 +50,10 @@ const Artworks = () => {
   // Pagination calculations
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
   const totalPages = Math.ceil(products.length / productsPerPage);
 
   // Create array of page numbers
@@ -70,7 +73,7 @@ const Artworks = () => {
         setCurrentPage(pendingPage);
         setPendingPage(null);
         setLoading(false);
-      }, 1000);
+      }, 500);
 
       return () => clearTimeout(timer);
     }
@@ -78,7 +81,8 @@ const Artworks = () => {
 
   // Function to change page with loading and instant scroll
   const changePageWithLoading = (pageNumber: number) => {
-    if (pageNumber < 1 || pageNumber > totalPages || pageNumber === currentPage) return;
+    if (pageNumber < 1 || pageNumber > totalPages || pageNumber === currentPage)
+      return;
 
     setLoading(true);
     setPendingPage(pageNumber);
@@ -105,7 +109,7 @@ const Artworks = () => {
     <div>
       {/* Loading overlay */}
       {loading && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div >
           <Loading />
         </div>
       )}
@@ -113,10 +117,12 @@ const Artworks = () => {
       {/* Content only visible when not loading */}
       {!loading && (
         <Container>
-          <div className="flex items-start gap-10">
+          <div className="flex items-center flex-col md:items-center gap-10">
             <div>
-              <p className="text-4xl font-semibold mb-5 text-center">Art Collection</p>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+              <p className="text-4xl font-semibold mb-5 text-center">
+                Art Collection
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 items-center place-items-center">
                 {currentProducts.map((item: ProductProps) => (
                   <ProductCard item={item} key={item?._id} />
                 ))}

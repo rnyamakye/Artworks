@@ -3,7 +3,7 @@ import Container from "./Container";
 
 export const Footer = () => {
   return (
-    <Container className="bg-gray-100">
+    <Container className="bg-gray-100 mx-0">
       <div className="w-full mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row gap-20">
           {/* Brand & Newsletter */}
@@ -25,7 +25,7 @@ export const Footer = () => {
               Discover the beauty of pencil art through our blog, tutorials, and
               shop.
             </p>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center md:items-start">
               <div className="mt-2 flex items-center group">
                 <span className="font-semibold text-gray-900 text-sm bg-white py-2 px-4 rounded-l-md group-hover:bg-gray-900 group-hover:text-white transition duration-300">
                   Commision yours

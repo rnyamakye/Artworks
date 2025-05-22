@@ -31,14 +31,14 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
-    { href: "/shop", label: "Shop" },
+    { href: "/products", label: "Artworks" },
     { href: "/contact", label: "Contact" }
   ];
 
   return (
     <>
       <Container
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-10 py-8 lg:px-10 flex flex-col justify-center  ${className} ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-10 py-8 md:px-10 mx-0 flex flex-col justify-center  ${className} ${
           isScrolled
             ? "bg-background/50 backdrop-blur-md shadow-sm"
             : "bg-transparent backdrop-blur-0"

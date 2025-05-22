@@ -1,7 +1,7 @@
 import React from "react";
 
 const BusinessHours: React.FC = () => (
-  <div className="bg-white rounded-lg shadow md:p-4 flex flex-col md:w-1/2 w-full p-8">
+  <div className="bg-white rounded-lg shadow md:p-4 flex flex-col lg:w-1/2 w-full p-8">
     <h4 className="font-semibold text-sm mb-3 flex items-center">
       <svg
         className="w-4 h-4 mr-1"

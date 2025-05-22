@@ -23,7 +23,7 @@ const ProductCard = ({ item }: Props) => {
           onClick={open}
           src={item?.images[0]}
           alt=""
-          className="w-full h-full rounded-lg object-cover group-hover:scale-[1.15] duration-300 scale-[1.08]"
+          className="w-full h-full md:w-[350px] rounded-lg object-cover group-hover:scale-[1.15] duration-300 scale-[1.08]"
         />
       </div>
 
@@ -41,13 +41,13 @@ const ProductCard = ({ item }: Props) => {
                 enterTo="opacity-100 transform-[scale(100%)] "
                 leave="ease-in duration-300 -translate-y-20"
                 leaveFrom="opacity-100 transform-[scale(100%)] -translate-y-10"
-                leaveTo="opacity-0 transform-[scale(90%)] -translate-y-10"
+                leaveTo="opacity-0 transform-[scale(50%)] -translate-y-10"
               >
                 <DialogPanel className="w-full max-w-lg rounded-xl bg-black/10  z-50 p-6">
                   <div>
                     <img
                       src={item?.images[0]}
-                      className="w-full object-cover rounded-lg h-full"
+                      className="w-full object-cover rounded-lg h-full md:h-[500px] lg:h-[600px]"
                     />
                   </div>
                   <div className="mt-4">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface FAQ {
   question: string;
@@ -75,9 +76,13 @@ const FAQSection: React.FC = () => {
         section.
       </div>
       <div className="text-center mt-2">
-        <a href="/faqs" className="text-blue-600 font-semibold hover:underline">
-          View All FAQs &rarr;
-        </a>
+        <Link
+          to={"/faq"}
+          className="text-md hover:text-black text-gray-900 relative group overflow-hidden"
+        >
+          View All FAQs
+          <span className="inline-flex w-full h-[1px] bg-black absolute bottom-0 left-0 transform -translate-x-[50%] scale-0 group-hover:translate-x-0 duration-300 group-hover:scale-100"></span>
+        </Link>
       </div>
     </div>
   );

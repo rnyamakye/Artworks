@@ -14,7 +14,7 @@ export const ContactCard = ({
   href
 }: ContactCardProps) => {
   return (
-    <a href={href} className="bg-white rounded-xl shadow-md">
+    <a href={href} className="bg-white w-full rounded-xl shadow-md">
       <div className="flex flex-col">
         <div className="bg-gray-200 rounded-t-xl flex justify-center items-center h-20">
           {icon}

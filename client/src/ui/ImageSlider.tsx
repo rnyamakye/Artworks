@@ -71,7 +71,7 @@ const ImageSlider = () => {
   }
 
   return (
-    <div className="relative w-[90vw] h-full overflow-hidden rounded-lg">
+    <div className="relative w-[90vw] md:w-full h-full overflow-hidden rounded-lg">
       {/* Slides container */}
       <div
         className="flex transition-transform duration-500 ease-out"

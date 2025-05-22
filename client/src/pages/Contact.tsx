@@ -19,7 +19,7 @@ const Contact = () => {
   };
 
   return (
-    <Container className="bg-white min-h-screen flex flex-col items-center justify-center py-20 w-full">
+    <Container className="min-h-screen flex flex-col items-center justify-center py-20 w-full">
       <section className="flex flex-col items-center justify-center mb-10 ">
         {/* Top Section: Header and Intro */}
         <h1 className="text-5xl font-semibold mb-4 text-center">
@@ -29,7 +29,7 @@ const Contact = () => {
           Have questions about our artwork, tutorials, or products? We'd love to
           hear from you!
         </p>
-        <div className="w-full md:w-[70rem] rounded-xl shadow flex flex-col md:flex-row bg-[image:url('/smartist-poster-2.jpg')] items-center p-8">
+        <div className="w-full md:w-full rounded-xl shadow flex flex-col md:flex-row md:bg-right bg-[image:url('/smartist-poster-2.jpg')] items-center p-8">
           <div className="flex-1 mb-6 md:mb-0 md:mr-8 ">
             <h2 className="text-3xl font-bold mb-2">Let's Connect</h2>
             <p className="text-gray-700 mb-6">
@@ -38,7 +38,6 @@ const Contact = () => {
             </p>
             {/* Smooth scroll to contact form */}
             <a
-              target="_blank"
               href="#contactForm"
               onClick={handleContactNowClick}
               className="bg-gray-900 text-white px-6 py-3 rounded-lg w-fit font-semibold flex items-center hover:bg-gray-800 transition"
@@ -118,7 +117,7 @@ const Contact = () => {
             <a
               target="_blank"
               href="mailto:smartmasterpiece7@gmail.com"
-              className="font-medium text-gray-800 underline"
+              className="font-medium text-gray-800 underline md:break-all"
             >
               smartmasterpiece7@gmail.com
             </a>
@@ -216,7 +215,7 @@ const Contact = () => {
               24 hours.
             </p>
           </div>
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col lg:flex-row gap-4">
             <LocationMap
               address="Near Baba Yara Sports Stadium, Amakom, Kumasi, Ghana"
               mapQuery="Baba Yara Sports Stadium, Amakom, Kumasi, Ghana"
@@ -225,8 +224,7 @@ const Contact = () => {
           </div>
         </div>
         {/* Right: Contact Form - This is the target ID */}
-        <div className="h-10" id="contactForm" />
-
+        <div className="h-10 md:hidden" id="contactForm" />
         <div className="md:col-2">
           <ContactForm />
         </div>

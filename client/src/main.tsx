@@ -22,6 +22,7 @@ import TermsOfService from "./pages/TermsOfService.tsx";
 import Tutorials from "./pages/Tutorials.tsx";
 import ArtistSpotlights from "./pages/ArtistSpotlights.tsx";
 import { Articles } from "./pages/Articles.tsx";
+import Shop from "./pages/Shop.tsx";
 
 const RouterLayout = () => {
   return (
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/blog", element: <Blog /> },
       { path: "/supplies", element: <ArtSuppliesGuide /> },
-      {path: "/articles", element: <Articles />},
+      { path: "/articles", element: <Articles /> },
+      { path: "/shop", element: <Shop /> },
       { path: "/faqs", element: <FAQs /> },
       { path: "/contact", element: <Contact /> },
       { path: "/products", element: <Product /> },
