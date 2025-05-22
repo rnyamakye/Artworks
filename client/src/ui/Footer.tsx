@@ -31,7 +31,6 @@ export const Footer = () => {
                   Commision yours
                 </span>
                 <Link
-                  target="_blank"
                   to={"/contact"}
                   type="submit"
                   className="bg-gray-900 text-white px-4 pl-6 py-2 rounded-r-md text-sm font-semibold group-hover:bg-white group-hover:text-gray-900 transition duration-300"
@@ -47,29 +46,19 @@ export const Footer = () => {
             <div className="font-semibold text-gray-900 mb-3">Quick Links</div>
             <ul className="space-y-2 text-gray-700">
               <li>
-                <Link target="_blank" to="/">
-                  Home
-                </Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <Link target="_blank" to="/about">
-                  About Us
-                </Link>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <Link target="_blank" to="/blog">
-                  Blog
-                </Link>
+                <Link to="/blog">Blog</Link>
               </li>
               <li>
-                <Link target="_blank" to="/shop">
-                  Shop
-                </Link>
+                <Link to="/shop">Shop</Link>
               </li>
               <li>
-                <Link target="_blank" to="/contact">
-                  Contact
-                </Link>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </div>
@@ -79,24 +68,16 @@ export const Footer = () => {
             <div className="font-semibold text-gray-900 mb-3">Resources</div>
             <ul className="space-y-2 text-gray-700">
               <li>
-                <Link target="_blank" to="/tutorials">
-                  Tutorials
-                </Link>
+                <Link to="/tutorials">Tutorials</Link>
               </li>
               <li>
-                <Link target="_blank" to="/spotlight">
-                  Artist Spotlights
-                </Link>
+                <Link to="/spotlight">Artist Spotlights</Link>
               </li>
               <li>
-                <Link target="_blank" to="/supplies">
-                  Art Supplies Guide
-                </Link>
+                <Link to="/supplies">Art Supplies Guide</Link>
               </li>
               <li>
-                <Link target="_blank" to="/faqs">
-                  FAQs
-                </Link>
+                <Link to="/faqs">FAQs</Link>
               </li>
             </ul>
           </div>
@@ -106,24 +87,16 @@ export const Footer = () => {
             <div className="font-semibold text-gray-900 mb-3">Legal</div>
             <ul className="space-y-2 text-gray-700 mb-5">
               <li>
-                <Link target="_blank" to="/privacy-policy">
-                  Privacy Policy
-                </Link>
+                <Link to="/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <Link target="_blank" to="/terms">
-                  Terms of Service
-                </Link>
+                <Link to="/terms">Terms of Service</Link>
               </li>
               <li>
-                <Link target="_blank" to="/shipping">
-                  Shipping Policy
-                </Link>
+                <Link to="/shipping">Shipping Policy</Link>
               </li>
               <li>
-                <Link target="_blank" to="/returns">
-                  Return Policy
-                </Link>
+                <Link to="/returns">Return Policy</Link>
               </li>
             </ul>
             <div>
@@ -131,7 +104,6 @@ export const Footer = () => {
               <div className="flex space-x-4 text-gray-500">
                 {/* Facebook */}
                 <Link
-                  target="_blank"
                   to="https://web.facebook.com/profile.php?id=100040140157602"
                   aria-label="Facebook"
                 >
@@ -183,7 +155,8 @@ export const Footer = () => {
         </div>
         {/* Divider */}
         <div className="border-t border-gray-200 mt-10 pt-6 text-center text-gray-500 text-sm">
-          © 2025 PencilArt Blog. All rights reserved.
+          &copy; {new Date().getFullYear()} Your Company Name. All rights
+          reserved.
         </div>
       </div>
     </Container>

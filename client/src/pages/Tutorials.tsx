@@ -3,6 +3,7 @@ import YouTube from "react-youtube";
 // import { Calendar } from "lucide-react";
 import { getData } from "../lib";
 import { config } from "../config";
+import Loading from "../ui/Loading";
 
 interface TutorialVideo {
   id: string;
@@ -80,7 +81,7 @@ export default function TutorialsPage() {
 
       {/* Video Cards */}
       {loading ? (
-        <div className="py-12 text-gray-500 text-lg">Loading...</div>
+        <Loading />
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full max-w-7xl">

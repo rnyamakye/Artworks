@@ -1,7 +1,5 @@
 import { ComingSoon } from "../ui/ComingSoon";
 
-const ArtSuppliesGuide = () => {
+export const Articles = () => {
   return <ComingSoon />;
 };
-
-export default ArtSuppliesGuide;

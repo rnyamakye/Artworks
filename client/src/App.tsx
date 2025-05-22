@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import ImageSlider from "./ui/ImageSlider";
+import Loading from "./ui/Loading";
 
 const artworks = [
   {
@@ -27,48 +29,62 @@ const articles = [
   {
     src: "/commmissioned-portrait-30.JPG",
     date: "March 11, 2024",
-    title: "Mastering Pencil Shading Techniques",
+    title: "Doing family portraits is one of the best parts of the job.",
     description: ""
   },
-  {
-    src: "/commmissioned-portrait-3.JPG",
-    date: "March 12, 2024",
-    title: "Mastering Pencil Shading Techniques",
-    description: ""
-  },
-  {
-    src: "/commmissioned-portrait-7.JPG",
-    date: "March 13, 2024",
-    title: "Mastering Pencil Shading Techniques",
-    description: ""
-  },
-  {
-    src: "/commmissioned-portrait-5.JPG",
-    date: "March 14, 2024",
-    title: "Mastering Pencil Shading Techniques",
-    description: ""
-  }
 ];
 
 const testimonials = [
   {
-    name: "Customer Name",
+    name: "Richard",
     role: "Art Enthusiast",
-    text: "The tutorials on this site have transformed my pencil drawing skills. I've learned techniques I never knew existed!"
+    text: "Portraits by Smartist are simply breathtaking! The attention to detail is incredible.",
   },
-  {
-    name: "Customer Name",
-    role: "Art Enthusiast",
-    text: "The tutorials on this site have transformed my pencil drawing skills. I've learned techniques I never knew existed!"
-  },
-  {
-    name: "Customer Name",
-    role: "Art Enthusiast",
-    text: "The tutorials on this site have transformed my pencil drawing skills. I've learned techniques I never knew existed!"
-  }
 ];
 
+// --- IMAGE PRELOADING HELPERS ---
+const allImagePaths = [
+  ...artworks.map(a => a.src),
+  ...articles.map(a => a.src)
+];
+
+function preloadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new window.Image();
+    img.src = src;
+    img.onload = resolve;
+    img.onerror = reject;
+  });
+}
+
+function preloadImages(imageArray) {
+  return Promise.all(imageArray.map(preloadImage));
+}
+
+// --- APP COMPONENT ---
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const visited = localStorage.getItem("hasVisited");
+    if (!visited) {
+      preloadImages(allImagePaths)
+        .then(() => {
+          setLoading(false);
+          localStorage.setItem("hasVisited", "true");
+        })
+        .catch(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+
   return (
     <div>
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between max-w-6xl mx-auto px-4 md:px-8 pt-10 md:py-24">
@@ -101,7 +117,6 @@ const App = () => {
             </Link>
           </div>
         </div>
-
         {/* Right side: Placeholder image */}
         <div className="flex-1 flex justify-center mt-12 md:mt-0 md:ml-12">
           <div className="w-full aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
@@ -130,7 +145,6 @@ const App = () => {
                 className="bg-white rounded-lg shadow overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
               >
                 <div className="flex-1 flex items-center justify-center bg-gray-100 aspect-square">
-                  {/* Placeholder image icon */}
                   <img
                     src={product.src}
                     alt={product.title}
@@ -155,11 +169,11 @@ const App = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
           {articles.map((article, idx) => (
+            <Link to={"/articles"}>
             <article
               key={idx}
               className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition duration-300"
             >
-              {/* Image Placeholder */}
               <div className="bg-gray-200 aspect-[4/3] flex items-center justify-center">
                 <img
                   src={article.src}
@@ -167,8 +181,6 @@ const App = () => {
                   className="h-full w-full object-cover object-top"
                 />
               </div>
-
-              {/* Text content */}
               <div className="p-4">
                 <time className="block mb-1 text-xs text-gray-500">
                   {article.date}
@@ -178,11 +190,10 @@ const App = () => {
                 </h3>
                 <p className="text-sm text-gray-600">{article.description}</p>
               </div>
-            </article>
+            </article></Link>
           ))}
         </div>
       </section>
-
       <section className="max-w-7xl mx-auto py-12 px-4">
         <h2 className="text-3xl font-bold text-center mb-10">
           What Our Community Says
@@ -193,10 +204,8 @@ const App = () => {
               key={idx}
               className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-start shadow-sm"
             >
-              {/* Avatar Placeholder */}
               <div className="flex items-center mb-3">
                 <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-3">
-                  {/* Optional: Initials or icon */}
                   <svg
                     className="w-6 h-6 text-gray-400"
                     fill="none"
@@ -218,8 +227,6 @@ const App = () => {
           ))}
         </div>
       </section>
-
-      {/* Footer */}
     </div>
   );
 };

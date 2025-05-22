@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Calendar } from "lucide-react";
 import { getData } from "../lib";
 import { config } from "../config";
+import Loading from "../ui/Loading";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -71,9 +72,9 @@ export default function BlogPage() {
                 enter="ease-in duration-300"
                 enterFrom="opacity-0 transform-[scale(90%)]"
                 enterTo="opacity-100 transform-[scale(100%)] "
-                leave="ease-in duration-100 -translate-y-20"
-                leaveFrom="opacity-100 transform-[scale(100%)] -translate-y-10"
-                leaveTo="opacity-0 transform-[scale(90%)] -translate-y-10"
+                leave="ease-in duration-100"
+                leaveFrom="opacity-100 transform-[scale(100%)]"
+                leaveTo="opacity-0 transform-[scale(50%)] "
               >
                 <Dialog.Panel className="w-full max-w-lg rounded-2xl bg-black/30 backdrop-blur-2xl z-50 p-6">
                   <img
@@ -120,7 +121,7 @@ export default function BlogPage() {
 
         {/* Blog Image Cards */}
         {loading ? (
-          <div className="py-12 text-gray-500 text-lg">Loading...</div>
+          <Loading />
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full max-w-7xl">
