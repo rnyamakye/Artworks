@@ -85,13 +85,13 @@ const About: React.FC = () => {
           className="bg-gray-50 rounded-lg p-10 text-center"
         >
           <h2 className="text-xl md:text-2xl font-semibold mb-4">
-            Our Mission
+            Smartist's Mission
           </h2>
           <p className="max-w-3xl mx-auto text-gray-700 mb-10">
-            We believe that art should be accessible to everyone. Our mission is
-            to provide resources, inspiration, and community for pencil artists
-            at every stage of their journey, from complete beginners to seasoned
-            professionals.
+            As an artist, Smartist is dedicated to expressing emotions and
+            stories through pencil art. His mission is to inspire creativity,
+            continuously learn and improve his craft, and build meaningful
+            connections with fellow artists and art lovers.
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-12 max-w-5xl mx-auto">
             {/* Inspire Creativity */}
@@ -122,12 +122,12 @@ const About: React.FC = () => {
                 Inspire Creativity
               </div>
               <p className="text-gray-500 text-sm mt-1 max-w-xs">
-                Showcase diverse pencil art styles to inspire artists to explore
-                new techniques and subjects.
+                Through his artwork, Smartist aims to spark imagination and
+                encourage others to explore their own creative potential.
               </p>
             </div>
 
-            {/* Educate Artists */}
+            {/* Pursue Growth */}
             <div className="flex flex-col items-center flex-1">
               <div className="bg-gray-200 rounded-full p-4 mb-3">
                 {/* Book icon */}
@@ -150,14 +150,14 @@ const About: React.FC = () => {
                   <path d="M8 4v16" stroke="currentColor" strokeWidth={2} />
                 </svg>
               </div>
-              <div className="font-semibold text-gray-900">Educate Artists</div>
+              <div className="font-semibold text-gray-900">Pursue Growth</div>
               <p className="text-gray-500 text-sm mt-1 max-w-xs">
-                Provide comprehensive tutorials and resources for artists at all
-                skill levels.
+                Constantly refining his skills and learning new techniques to
+                evolve as an artist and storyteller.
               </p>
             </div>
 
-            {/* Build Community */}
+            {/* Build Connections */}
             <div className="flex flex-col items-center flex-1">
               <div className="bg-gray-200 rounded-full p-4 mb-3">
                 {/* Users icon */}
@@ -182,10 +182,12 @@ const About: React.FC = () => {
                   />
                 </svg>
               </div>
-              <div className="font-semibold text-gray-900">Build Community</div>
+              <div className="font-semibold text-gray-900">
+                Build Connections
+              </div>
               <p className="text-gray-500 text-sm mt-1 max-w-xs">
-                Foster a supportive community where artists can connect, share,
-                and grow together.
+                Creating meaningful relationships with fellow artists and art
+                enthusiasts to share inspiration and support.
               </p>
             </div>
           </div>
@@ -383,12 +385,12 @@ const About: React.FC = () => {
                   </span>
                   <div>
                     <span className="font-semibold">
-                      Featured in Art Monthly Magazine
+                      Featured in Interviews
                     </span>
                     <br />
                     <span className="text-gray-600 text-sm">
                       Profiled as an emerging talent and creative force in the
-                      2023 edition of Art Monthly.
+                      art world.
                     </span>
                   </div>
                 </li>

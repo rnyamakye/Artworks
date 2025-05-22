@@ -69,9 +69,46 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
             ))}
           </nav>
 
+          <div className="flex gap-2 md:hidden items-center">
+            <a
+              href="https://wa.me/1234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="text-green-600 hover:text-green-700 transition"
+            >
+              <IoLogoWhatsapp className="w-5 h-5 text-gray-500 hover:text-gray-800" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@smartist88?_t=ZM-8wXnYAmrfHi&_r=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="text-black hover:text-gray-700 transition"
+            >
+              <SiTiktok className="w-6 h-5 text-gray-500 hover:text-gray-800" />
+            </a>
+            <a
+              href="https://www.instagram.com/an_mmanuel?igsh=MXViNWhzajhldTczYg%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-pink-600 hover:text-pink-700 transition"
+            >
+              <IoLogoInstagram className="w-5 h-5 text-gray-500 hover:text-gray-800" />
+            </a>
+            <a
+              href="mailto:smartmasterpiece7@gmail.com"
+              aria-label="Email"
+              className="text-gray-700 hover:text-gray-900 transition"
+            >
+              <IoMailSharp className="w-5 h-5 text-gray-500 hover:text-gray-800" />
+            </a>
+          </div>
+
           {/* Right-side Icons */}
-          <div className="flex items-center space-x-2 md:space-x-4">
-            <div className="flex gap-2 items-center">
+          <div className="flex items-center md:space-x-4 ">
+            <div className="md:flex hidden gap-2 items-center">
               <a
                 href="https://wa.me/1234567890"
                 target="_blank"
@@ -107,14 +144,13 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
                 <IoMailSharp className="w-5 h-5 text-gray-500 hover:text-gray-800" />
               </a>
             </div>
-
             {/* Profile/Sidebar Button */}
             <button
               className="flex items-center md:hidden gap-2 p-2 rounded-lg hover:bg-gray-200 transition duration-500"
               onClick={() => setShowSidebar(true)}
               aria-label="Open Sidebar"
             >
-              <Menu className="h-7 w-7 font-bold" />
+              <Menu className="h-7 w-7 text-gray-600" />
             </button>
           </div>
         </div>

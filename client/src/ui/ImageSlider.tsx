@@ -25,6 +25,10 @@ const sliderImages: Slide[] = [
   },
   {
     id: 5,
+    src: "/MeekMill-profile.JPG"
+  },
+  {
+    id: 5,
     src: "/satisfied-customer-7.jpg"
   }
 ];
