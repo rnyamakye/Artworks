@@ -37,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   return (
     <>
       <Container
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-10 py-8 md:px-10 mx-0 flex flex-col justify-center  ${className} ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-10 py-8 md:px-10 md:py-5 md:h-12 mx-0 flex flex-col justify-center  ${className} ${
           isScrolled
             ? "bg-background/50 backdrop-blur-md shadow-sm"
             : "bg-transparent backdrop-blur-0"
@@ -50,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
               <img
                 src="/smartist-logo-1.jpg"
                 alt="logo"
-                className="w-[40px] rounded-full"
+                className="w-[40px] md:w-[35px] rounded-full"
               />
             </Link>
           </div>
@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
 
           <div className="flex gap-2 md:hidden items-center">
             <a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/+233547348350"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -110,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
           <div className="flex items-center md:space-x-4 ">
             <div className="md:flex hidden gap-2 items-center">
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/+233547348350"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

@@ -51,7 +51,7 @@ export const products = [
   },
   {
     _id: 2004,
-    images: ["/newpiece2.jpg"],
+    images: ["https://d2oe4z990jupbo.cloudfront.net/newpiece2.jpg"],
     description: ""
   },
   {
