@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-md hover:text-black text-gray-900 relative group overflow-hidden"
+                className="text-md md:text-sm hover:text-black text-gray-900 relative group overflow-hidden"
               >
                 {link.label}
                 <span className="inline-flex w-full h-[1px] bg-black absolute bottom-0 left-0 transform -translate-x-[50%] scale-0 group-hover:translate-x-0 duration-300 group-hover:scale-100"></span>

@@ -109,7 +109,7 @@ const Artworks = () => {
     <div>
       {/* Loading overlay */}
       {loading && (
-        <div >
+        <div>
           <Loading />
         </div>
       )}
@@ -117,7 +117,7 @@ const Artworks = () => {
       {/* Content only visible when not loading */}
       {!loading && (
         <Container>
-          <div className="flex items-center flex-col md:items-center gap-10">
+          <div className="flex items-center flex-col md:items-center gap-10 md:py-10">
             <div>
               <p className="text-4xl font-semibold mb-5 text-center">
                 Art Collection

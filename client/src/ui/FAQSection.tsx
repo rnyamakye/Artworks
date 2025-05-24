@@ -77,7 +77,7 @@ const FAQSection: React.FC = () => {
       </div>
       <div className="text-center mt-2">
         <Link
-          to={"/faq"}
+          to={"/faqs"}
           className="text-md hover:text-black text-gray-900 relative group overflow-hidden"
         >
           View All FAQs

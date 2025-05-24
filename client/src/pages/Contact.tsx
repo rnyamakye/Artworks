@@ -20,7 +20,7 @@ const Contact = () => {
 
   return (
     <Container className="min-h-screen flex flex-col items-center justify-center py-20 w-full">
-      <section className="flex flex-col items-center justify-center mb-10 ">
+      <section className="flex flex-col items-center justify-center mb-10 md:my-10 w-full">
         {/* Top Section: Header and Intro */}
         <h1 className="text-5xl font-semibold mb-4 text-center">
           Get in Touch
@@ -29,7 +29,7 @@ const Contact = () => {
           Have questions about our artwork, tutorials, or products? We'd love to
           hear from you!
         </p>
-        <div className="w-full md:w-full rounded-xl shadow flex flex-col md:flex-row md:bg-right bg-[image:url('/smartist-poster-2.jpg')] items-center p-8">
+        <div className="w-full md:w-full rounded-xl shadow flex flex-col md:flex-row md:bg-right bg-gray-200 items-center p-8">
           <div className="flex-1 mb-6 md:mb-0 md:mr-8 ">
             <h2 className="text-3xl font-bold mb-2">Let's Connect</h2>
             <p className="text-gray-700 mb-6">
@@ -60,9 +60,9 @@ const Contact = () => {
           </div>
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-48 h-48 flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full border-2 border-gray-200" />
+              <div className="absolute inset-0 rounded-full border-2 border-gray-500" />
               <svg
-                className="w-20 h-20 text-gray-300"
+                className="w-20 h-20 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
